@@ -1,4 +1,4 @@
-# iced_plotters_was_a_mistake
+# iced_plotters_example
 
 This is a rudimentary, one file expirement implementing a plotters backend on top of iced (built with lyon).
 
