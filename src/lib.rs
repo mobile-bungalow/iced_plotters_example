@@ -88,7 +88,7 @@ impl<'a> DrawingBackend for PlotFrame<'a> {
         fill: bool,
     ) -> Result<(), DrawingErrorKind<Self::ErrorType>> {
         let p = Path::rectangle(
-            Point::new(upper_left.0 as f32, upper_left.1 as f32),
+            Point::new(bottom_right.0 as f32, bottom_right.1 as f32),
             Size::new(
                 (upper_left.0 - bottom_right.0) as f32,
                 (upper_left.1 - bottom_right.1) as f32,
