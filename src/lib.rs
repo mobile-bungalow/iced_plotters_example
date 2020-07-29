@@ -34,7 +34,7 @@ pub struct PlotFrame<'a>(pub &'a mut canvas::Frame);
 impl<'a> DrawingBackend for PlotFrame<'a> {
     type ErrorType = PlotErr;
     fn get_size(&self) -> (u32, u32) {
-        (self.0.height() as u32, self.0.width() as u32)
+        (self.0.width() as u32, self.0.height() as u32)
     }
 
     fn ensure_prepared(&mut self) -> Result<(), DrawingErrorKind<Self::ErrorType>> {
