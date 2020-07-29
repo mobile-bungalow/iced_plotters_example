@@ -147,7 +147,11 @@ impl<'a> DrawingBackend for PlotFrame<'a> {
         self.0.fill_text(Text {
             content: text.into(),
             size: style.font.get_size() as f32,
-            position: Point::new(pos.0 as f32, pos.1 as f32),
+            //TODO: Find out why this works. (tested on two monitors)
+            position: Point::new(
+                pos.0 as f32 - style.font.get_size() as f32 * 2.5,
+                pos.1 as f32 - 5.0,
+            ),
             color: Color::from_rgb8(r, g, b),
             ..Text::default()
         });
