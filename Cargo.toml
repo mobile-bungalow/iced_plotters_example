@@ -1,0 +1,11 @@
+[package]
+name = "iced_plotters"
+version = "0.1.0"
+authors = ["mobile-bungalow <drivelwizard@camp_chapel.wand>"]
+edition = "2018"
+
+[dependencies]
+plotters = "0.2.15"
+iced = { version = "0.1.1", features = ["canvas"] }
+iced_native = "0.2.2"
+iced_wgpu = "0.2.2"
