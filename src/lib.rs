@@ -10,13 +10,13 @@
 pub use iced;
 pub use plotters;
 
-use iced::canvas::{self, LineCap, LineJoin, Path, Stroke};
+use iced::canvas::{self, LineCap, LineJoin, Path, Stroke, Text};
 use iced::{Color, Point, Size};
 
 use plotters::{
     drawing::{backend::BackendStyle, DrawingBackend},
     prelude::backend::{BackendCoord, DrawingErrorKind},
-    style::{Color as ColorTrait, RGBAColor},
+    style::{Color as ColorTrait, RGBAColor, TextStyle},
 };
 
 use std::error::Error;
@@ -72,7 +72,7 @@ impl<'a> DrawingBackend for PlotFrame<'a> {
         let (r, g, b) = style.as_color().rgb();
         let stroke = Stroke {
             color: Color::from_rgb8(r, g, b),
-            width: 1., //style.stroke_width() as f32,
+            width: style.stroke_width() as f32,
             line_cap: LineCap::Butt,
             line_join: LineJoin::Miter,
         };
@@ -133,6 +133,24 @@ impl<'a> DrawingBackend for PlotFrame<'a> {
             };
             self.0.stroke(&p, stroke);
         }
+        Ok(())
+    }
+
+    fn draw_text(
+        &mut self,
+        text: &str,
+        style: &TextStyle<'_>,
+        pos: BackendCoord,
+    ) -> Result<(), DrawingErrorKind<Self::ErrorType>> {
+        let (r, g, b) = style.color.rgb();
+
+        self.0.fill_text(Text {
+            content: text.into(),
+            size: style.font.get_size() as f32,
+            position: Point::new(pos.0 as f32, pos.1 as f32),
+            color: Color::from_rgb8(r, g, b),
+            ..Text::default()
+        });
         Ok(())
     }
 }
