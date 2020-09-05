@@ -5,6 +5,7 @@ authors = ["mobile-bungalow <drivelwizard@camp_chapel.wand>"]
 edition = "2018"
 
 [dependencies]
+chrono= "*"
 plotters = "0.2.15"
 iced = { version = "0.1.1", features = ["canvas"] }
 iced_native = "0.2.2"
